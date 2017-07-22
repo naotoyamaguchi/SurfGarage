@@ -2,6 +2,6 @@
 
 ## Running
 Server must be running first.
-```
+```javascript
 npm start
 ```
