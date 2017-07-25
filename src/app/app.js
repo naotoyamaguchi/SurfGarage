@@ -5,7 +5,9 @@ import defaultState from '../defaultState';
 import contactState from '../contactState';
 import aboutState from '../aboutState';
 import testState from '../testState';
+import newBoardState from '../newBoardState';
 import TestApi from '../testState/service.js';
+import NewBoardApi from '../newBoardState/service.js';
 
 import '../style/app.css';
 
@@ -50,13 +52,20 @@ angular.module(MODULE_NAME, ['ui.router', 'ngAnimate'])
       url: '/test',
       component: 'testState'
     })
+    .state({
+      name: 'newBoardState',
+      url: '/newBoard',
+      component: 'newBoardState'
+    });
   })
   .directive('app', app)
   .component('defaultState', defaultState)
   .component('contactState', contactState)
   .component('aboutState', aboutState)
   .component('testState', testState)
+  .component('newBoardState', newBoardState)
   .service('TestApi', TestApi)
+  .service('NewBoardApi', NewBoardApi)
   .controller('AppCtrl', AppCtrl);
 
 export default MODULE_NAME;
