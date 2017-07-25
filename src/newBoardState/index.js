@@ -6,12 +6,27 @@ class newBoardController{
 		this.NewBoardApi = NewBoardApi;
 
 		this.data = [];
+
+		this.feetOptions = [
+			{value: 1, feet: 'one'},
+			{value: 2, feet: 'two'}
+		];
+
 		NewBoardApi.getBoards()
 		.then(res => {
 			console.log(res);
-			this.data = res.data;
 		});
 	}
+
+	addBoard(board){
+		board.feet = board.feet.value;
+		this.NewBoardApi.addBoard(board)
+		.then(res => {
+			console.log(res);
+		});
+	}
+
+
 }
 
 export default {

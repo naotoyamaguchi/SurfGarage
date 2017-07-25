@@ -1,1 +1,55 @@
-<h1>New board state</h1>
+<h1>New Board</h1>
+<form ng-submit="newBoardCtrl.addBoard(newBoard)">
+	<span>Name: </span><input type="text" ng-model="newBoard.name">
+	<br>
+	<span>Shaper: </span><input type="text" ng-model="newBoard.shaper">
+	<br>
+	<span>Feet: </span><select ng-model="newBoard.feet">
+	  <option value="4">4</option>
+	  <option value="5">5</option>
+	  <option value="6">6</option>
+	  <option value="7">7</option>
+	  <option value="8">8</option>
+	  <option value="9">9</option>
+	  <option value="10">10</option>
+	  <option value="11">11</option>
+	  <option value="12">12</option>
+	</select>
+	<span>Inches: </span><select ng-model="newBoard.inches">
+	  <option value="1">1</option>
+	  <option value="2">2</option>
+	  <option value="3">3</option>
+	  <option value="4">4</option>
+	  <option value="5">5</option>
+	  <option value="6">6</option>
+	  <option value="7">7</option>
+	  <option value="8">8</option>
+	  <option value="9">9</option>
+	  <option value="10">10</option>
+	  <option value="11">11</option>
+	  <option value="12">12</option>
+	</select>
+	<br>
+	<span>Width</span><input type="text" ng-model="newBoard.width">
+	<br>
+	<span>Thickness</span><input type="text" ng-model="newBoard.thickness">
+	<br>
+	<span>Fins</span><select ng-model="newBoard.fins">
+	  <option value="1">1</option>
+	  <option value="2">2</option>
+	  <option value="3">3</option>
+	  <option value="4">4</option>
+	  <option value="5">5</option>
+	</select>
+
+
+	<br>
+	<br>
+	{{newBoardCtrl.feetOptions}}
+	<select name="mySelect" id="mySelect" 
+		ng-options="option.feet for option in newBoardCtrl.feetOptions track by option.value"
+		ng-model="newBoard.feet">
+		
+	</select>
+	<input type="submit" id="submit" value="Submit!">
+</form>
