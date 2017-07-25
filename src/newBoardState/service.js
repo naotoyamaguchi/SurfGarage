@@ -1,6 +1,7 @@
 export default class NewBoardApi {
-	constructor($http){
+	constructor($location, $http){
 		this.$http = $http;
+		this.$location = $location;
 	}
 
 	getBoards(location){
