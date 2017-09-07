@@ -2,62 +2,81 @@ import angular from 'angular';
 import template from './template.html';
 
 class newBoardController{
-	constructor(NewBoardApi){
+	constructor($scope, NewBoardApi, Upload, $timeout){
 		this.NewBoardApi = NewBoardApi;
 
 		this.data = [];
 
-		this.feetOptions = [
-			{value: 1, feet: 'one'},
-			{value: 2, feet: 'two'},
-			{value: 3, feet: 'three'},
-			{value: 4, feet: 'four'},
-			{value: 5, feet: 'five'},
-			{value: 6, feet: 'six'},
-			{value: 7, feet: 'seven'},
-			{value: 8, feet: 'eight'},
-			{value: 9, feet: 'nine'},
-			{value: 10, feet: 'ten'},
-			{value: 11, feet: 'eleven'},
-			{value: 12, feet: 'twelve'}
-		];
+		this.metricOptions = [1,2,3,4,5,6,7,8,9,10,11,12];
 
-		this.inchOptions = [
-			{value: 1, feet: 'one'},
-			{value: 2, feet: 'two'},
-			{value: 3, feet: 'three'},
-			{value: 4, feet: 'four'},
-			{value: 5, feet: 'five'},
-			{value: 6, feet: 'six'},
-			{value: 7, feet: 'seven'},
-			{value: 8, feet: 'eight'},
-			{value: 9, feet: 'nine'},
-			{value: 10, feet: 'ten'},
-			{value: 11, feet: 'eleven'},
-			{value: 12, feet: 'twelve'}
-		];
+		this.finOptions = [1,2,3,4,5,6];
 
-		this.finsOptions = [
-			{value: 0, fins: 'zero'},
-			{value: 1, fins: 'one'},
-			{value: 2, fins: 'two'},
-			{value: 3, fins: 'three'},
-			{value: 4, fins: 'four'},
-			{value: 5, fins: 'five'}
-		];
+		this.Upload = Upload;
+		this.$scope = $scope;
+		this.$timeout = $timeout;
 	}
 
-	addBoard(board){
-		board.feet = board.feet.value;
-		board.inches = board.inches.value;
-		board.fins = board.fins.value;
-		this.NewBoardApi.addBoard(board)
-		.then(res => {
-			window.location.replace('/#!/test');
-		});
-	}
+	  uploadPic(file) {
+      console.log(file);
+      if(file && file.length){
+        for(var i = 0; i < file.length; i++){
+          file[i].upload = this.Upload.upload({
+            url: 'http://localhost:3000/api/newBoard',
+            method: 'POST',
+            data: {name: this.$scope.name, shaper: this.$scope.shaper, feet: this.$scope.feet, inches: this.$scope.inches, width: this.$scope.width, thickness: this.$scope.thickness, fins: this.$scope.fins, surfboardImg: {
+                name: file[i].name,
+                file: file[i]
+            }},
+          });
+
+          file[i].upload.then((response) => {
+            console.log(response);
+            this.$timeout(function () {
+              file[i].result = response.data;
+            });
+          }, (response) => {
+            console.log(response);
+            if (response.status > 0 || response.status == -1)
+              this.$scope.errorMsg = "Error message " + response.status + ': ' + response.data;
+          }, (evt) => {
+            // Math.min is to fix IE which reports 200% sometimes
+            this.$scope.file[i].progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+          })
+          .then(() => {
+            window.location.replace('/#!/test');
+          });
+        }
+      }
 
 
+      file[0].upload = this.Upload.upload({
+        url: 'http://localhost:3000/api/newBoard',
+        method: 'POST',
+        data: {name: this.$scope.name, shaper: this.$scope.shaper, feet: this.$scope.feet, inches: this.$scope.inches, width: this.$scope.width, thickness: this.$scope.thickness, fins: this.$scope.fins, surfboardImg: {
+        		name: file[0].name,
+        		file: file
+        }},
+      });
+
+      file[0].upload.then((response) => {
+      	console.log(response);
+        this.$timeout(function () {
+          file[0].result = response.data;
+        });
+      }, (response) => {
+      	console.log(response);
+        if (response.status > 0 || response.status == -1)
+          this.$scope.errorMsg = "Error message " + response.status + ': ' + response.data;
+      }, (evt) => {
+        // Math.min is to fix IE which reports 200% sometimes
+        this.$scope.file[0].progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+      })
+      .then(() => {
+      	window.location.replace('/#!/test');
+      });
+
+
+    }
 }
 
 export default {

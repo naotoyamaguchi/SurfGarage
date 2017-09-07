@@ -1,6 +1,7 @@
 import angular from 'angular';
 import * as uiRouter from '@uirouter/angularjs';
 import * as ngAnimate from 'angular-animate';
+import * as ngFileUpload from 'ng-file-upload';
 import defaultState from '../defaultState';
 import contactState from '../contactState';
 import aboutState from '../aboutState';
@@ -27,7 +28,7 @@ class AppCtrl {
 
 const MODULE_NAME = 'app';
 
-angular.module(MODULE_NAME, ['ui.router', 'ngAnimate'])
+angular.module(MODULE_NAME, ['ui.router', 'ngAnimate', 'ngFileUpload'])
   .config( ( $stateProvider, $urlRouterProvider ) => {
     $urlRouterProvider.otherwise('/default');
 

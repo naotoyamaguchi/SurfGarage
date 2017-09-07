@@ -4,6 +4,7 @@ dependencies:
   angular-animate: 1.6.5
   autoprefixer: 6.7.7
   babel-core: 6.25.0
+  ng-file-upload: 12.2.13
   node-libs-browser: 2.0.0
   phantomjs-prebuilt: 2.1.14
   rimraf: 2.6.1
@@ -2712,6 +2713,9 @@ packages:
     dev: true
     resolution:
       integrity: sha1-KzJxhOiZIQEXeyhWP7XnECrNDKk=
+  /ng-file-upload/12.2.13:
+    resolution:
+      integrity: sha1-AYAPOHLlJvlTEPhHfpnk8S0NjRQ=
   /no-case/2.3.1:
     dependencies:
       lower-case: 1.1.4
@@ -4393,6 +4397,7 @@ specifiers:
   karma-sourcemap-loader: ^0.3.7
   karma-spec-reporter: 0.0.26
   karma-webpack: 2.0.1
+  ng-file-upload: ^12.2.13
   node-libs-browser: 2.0.0
   null-loader: ^0.1.1
   phantomjs-prebuilt: ^2.1.4

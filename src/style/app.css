@@ -50,6 +50,22 @@ footer a:hover{
   background-color: #369;
 }
 
+form .progress{
+  line-height: 15px;
+}
+
+.progress {
+    display: inline-block;
+    width: 100px;
+    border: 3px groove #CCC;
+}
+
+.progress div {
+    font-size: smaller;
+    background: orange;
+    width: 0;
+}
+
 #mainDiv{
   width: 85%;
   border: 1px solid black;
