@@ -5,9 +5,9 @@ import * as ngFileUpload from 'ng-file-upload';
 import defaultState from '../defaultState';
 import contactState from '../contactState';
 import aboutState from '../aboutState';
-import testState from '../testState';
+import boardsState from '../boardsState';
 import newBoardState from '../newBoardState';
-import TestApi from '../testState/service.js';
+import BoardsApi from '../boardsState/service.js';
 import NewBoardApi from '../newBoardState/service.js';
 
 import '../style/app.css';
@@ -49,9 +49,9 @@ angular.module(MODULE_NAME, ['ui.router', 'ngAnimate', 'ngFileUpload'])
       component: 'aboutState'
     })
     .state({
-      name: 'testState',
-      url: '/test',
-      component: 'testState'
+      name: 'boardsState',
+      url: '/boards',
+      component: 'boardsState'
     })
     .state({
       name: 'newBoardState',
@@ -63,9 +63,9 @@ angular.module(MODULE_NAME, ['ui.router', 'ngAnimate', 'ngFileUpload'])
   .component('defaultState', defaultState)
   .component('contactState', contactState)
   .component('aboutState', aboutState)
-  .component('testState', testState)
+  .component('boardsState', boardsState)
   .component('newBoardState', newBoardState)
-  .service('TestApi', TestApi)
+  .service('BoardsApi', BoardsApi)
   .service('NewBoardApi', NewBoardApi)
   .controller('AppCtrl', AppCtrl);
 

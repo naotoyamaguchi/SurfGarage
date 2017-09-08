@@ -84,6 +84,11 @@ form .progress{
   margin-left: auto;
   margin-right: auto;
 }
+
+.board-thumbnail {
+  max-width: 250px;
+  max-height: 250px;
+}
 /* styles in src/style directory are applied to the whole page */
 /*body {
   background: #0147A7;

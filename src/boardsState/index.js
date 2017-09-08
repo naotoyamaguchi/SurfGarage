@@ -1,12 +1,12 @@
 import angular from 'angular';
 import template from './template.html';
 
-class testStateController{
-	constructor(TestApi){
-		this.TestApi = TestApi;
+class boardsStateController{
+	constructor(BoardsApi){
+		this.BoardsApi = BoardsApi;
 
 		this.data = [];
-		TestApi.getTestApi()
+		BoardsApi.getBoardsApi()
 		.then(res => {
 			console.log(res);
 			this.data = res.data;
@@ -16,6 +16,6 @@ class testStateController{
 
 export default {
 	template,
-	controller: testStateController,
-	controllerAs: 'testCtrl'
+	controller: boardsStateController,
+	controllerAs: 'boardsCtrl'
 };

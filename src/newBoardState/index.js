@@ -25,7 +25,7 @@ class newBoardController{
           data: {name: this.$scope.name, shaper: this.$scope.shaper, feet: this.$scope.feet, inches: this.$scope.inches, width: this.$scope.width, thickness: this.$scope.thickness, fins: this.$scope.fins, surfboardImg: file, numOfFiles: file.length
           }
         });
-        window.location.replace('/#!/test');
+        window.location.replace('/#!/boards');
       }
 
       // file[0].upload.then((response) => {
