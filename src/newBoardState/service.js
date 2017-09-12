@@ -1,16 +1,12 @@
 export default class NewBoardApi {
-	constructor($location, $http){
+	constructor($location, $http, $window){
 		this.$http = $http;
 		this.$location = $location;
-	}
-
-	getBoards(location){
-		return this.$http.get("/api/test");
+		this.$http.defaults.headers.common['Authorization'] = "Bearer " + $window.localStorage.getItem('JWT');
 	}
 
 	addBoard(board){
 		console.log(board);
-		// return this.$http.post(`/api/newBoard?name=${board.name}&shaper=${board.shaper}&feet=${board.feet}&inches=${board.inches}&width=${board.width}&thickness=${board.thickness}&fins=${board.fins}`);
 		return this.$http.post('/api/newBoard', board);
 	}
 

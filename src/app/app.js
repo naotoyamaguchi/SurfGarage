@@ -2,6 +2,8 @@ import angular from 'angular';
 import * as uiRouter from '@uirouter/angularjs';
 import * as ngAnimate from 'angular-animate';
 import * as ngFileUpload from 'ng-file-upload';
+import loginState from '../loginState';
+import registerState from '../registerState';
 import defaultState from '../defaultState';
 import contactState from '../contactState';
 import aboutState from '../aboutState';
@@ -9,6 +11,8 @@ import boardsState from '../boardsState';
 import newBoardState from '../newBoardState';
 import BoardsApi from '../boardsState/service.js';
 import NewBoardApi from '../newBoardState/service.js';
+import NewUserApi from '../registerState/service.js';
+import LoginApi from '../loginState/service.js';
 
 import '../style/app.css';
 
@@ -33,6 +37,16 @@ angular.module(MODULE_NAME, ['ui.router', 'ngAnimate', 'ngFileUpload'])
     $urlRouterProvider.otherwise('/default');
 
     $stateProvider
+    .state({
+      name: 'registerState',
+      url: '/register',
+      component: 'registerState'
+    })
+    .state({
+      name: 'loginState',
+      url: '/login',
+      component: 'loginState'
+    })
     .state({
       name: 'defaultState',
       url: '/default',
@@ -60,11 +74,15 @@ angular.module(MODULE_NAME, ['ui.router', 'ngAnimate', 'ngFileUpload'])
     });
   })
   .directive('app', app)
+  .component('registerState', registerState)
+  .component('loginState', loginState)
   .component('defaultState', defaultState)
   .component('contactState', contactState)
   .component('aboutState', aboutState)
   .component('boardsState', boardsState)
   .component('newBoardState', newBoardState)
+  .service('LoginApi', LoginApi)
+  .service('NewUserApi', NewUserApi)
   .service('BoardsApi', BoardsApi)
   .service('NewBoardApi', NewBoardApi)
   .controller('AppCtrl', AppCtrl);
