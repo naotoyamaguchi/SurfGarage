@@ -1,43 +1,44 @@
-<h1>New Board</h1>
-<form ng-submit="newBoardCtrl.uploadPic(files)">
-	<span>Name: </span><input type="text" ng-model="name">
-	<br>
-	<span>Shaper: </span><input type="text" ng-model="shaper" name="shaper">
-	<br>
-	<span>Feet: </span>
-	<select name="mySelect" id="mySelect" 
-		ng-options="feet for feet in newBoardCtrl.metricOptions"
-		ng-model="feet">
-	</select>
-	<span>Inches: </span>
-	<select name="mySelect" id="mySelect" 
-		ng-options="feet for feet in newBoardCtrl.metricOptions"
-		ng-model="inches">
-	</select>
-	<br>
-	<span>Width</span><input type="text" ng-model="width">
-	<br>
-	<span>Thickness</span><input type="text" ng-model="thickness">
-	<br>
-	<span>Fins</span>
-	<select name="mySelect" id="mySelect" 
-		ng-options="feet for feet in newBoardCtrl.finOptions"
-		ng-model="fins">
-	</select>
+<div id="mainDiv">
+	<h1>New Board</h1>
+	<form ng-submit="newBoardCtrl.uploadPic(files)">
+		<span>Name: </span><input type="text" ng-model="name">
+		<br>
+		<span>Shaper: </span><input type="text" ng-model="shaper" name="shaper">
+		<br>
+		<span>Feet: </span>
+		<select name="mySelect" id="mySelect" 
+			ng-options="feet for feet in newBoardCtrl.metricOptions"
+			ng-model="feet">
+		</select>
+		<span>Inches: </span>
+		<select name="mySelect" id="mySelect" 
+			ng-options="feet for feet in newBoardCtrl.metricOptions"
+			ng-model="inches">
+		</select>
+		<br>
+		<span>Width</span><input type="text" ng-model="width">
+		<br>
+		<span>Thickness</span><input type="text" ng-model="thickness">
+		<br>
+		<span>Fins</span>
+		<select name="mySelect" id="mySelect" 
+			ng-options="feet for feet in newBoardCtrl.finOptions"
+			ng-model="fins">
+		</select>
 
-	<br>
+		<br>
 
-	<input type="file" ngf-select ng-model="files" ngf-multiple="true" name="boardImage" id="img"
-         accept="image/*" ngf-max-size="2MB" required
-         ngf-model-invalid="errorFile">
+		<input type="file" ngf-select ng-model="files" ngf-multiple="true" name="boardImage" id="img"
+	         accept="image/*" ngf-max-size="2MB" required
+	         ngf-model-invalid="errorFile" multiple>
 
-  <span class="progress" ng-show="file.progress >= 0">
-        <div style="width:{{file.progress}}%" 
-            ng-bind="file.progress + '%'"></div>
-      </span>
-      <span ng-show="file.result">Upload Successful</span>
-      <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
+	  <span class="progress" ng-show="file.progress >= 0">
+	        <div style="width:{{file.progress}}%" 
+	            ng-bind="file.progress + '%'"></div>
+	      </span>
+	      <span ng-show="file.result">Upload Successful</span>
+	      <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
 
-	<input type="submit" id="submit" value="Submit!">
-
-</form>
+		<input type="submit" id="submit" value="Submit!">
+	</form>
+</div>

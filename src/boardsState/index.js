@@ -12,6 +12,14 @@ class boardsStateController{
 			this.data = res.data;
 		});
 	}
+
+	delete(id){
+		console.log("works");
+		this.BoardsApi.deleteBoardApi(id);
+		this.data = this.data.filter((board) => {
+			return board.id !== id;
+		});
+	}
 }
 
 export default {

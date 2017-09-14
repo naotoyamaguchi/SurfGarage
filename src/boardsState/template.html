@@ -1,15 +1,16 @@
 <div id="mainDiv">
-	<h1>Test Div</h1>
-	<ul>
-		<li ng-repeat="board in boardsCtrl.data">
-			<p>Name: {{board.name}}</p>
-			<p>Shaper: {{board.shaper}}</p>
-			<p>Dims: {{board.feet}}'{{board.inches}} x {{board.width}} x {{board.thickness}}</p>
-			<ul>
-				<li ng-repeat="image in board.images">
-					<img class="board-thumbnail" src={{image.url}} alt="" style="">
-				</li>
-			</ul>
-		</li>
-	</ul>
+	<div>
+		<h1>Boards</h1>
+		<ul class="gallery">
+			<li ng-repeat="board in boardsCtrl.data" class="gallery-post">
+				<a ui-sref="detailedBoardState({id: '{{board.id}}'})">
+					<div class="board-thumbnail" ng-style="{'background-image': 'url(' + board.images[0].url + ')'}">
+						<div class="hoverCover">
+							<span class="hoverText">{{board.feet}}'{{board.inches}} {{board.name}}</span>
+						</div>
+					</div>
+				</a>
+			</li>
+		</ul>
+	</div>
 </div>

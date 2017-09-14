@@ -2,7 +2,7 @@ import angular from 'angular';
 import template from './template.html';
 
 class newBoardController{
-	constructor($scope, NewBoardApi, Upload, $timeout){
+	constructor($scope, NewBoardApi, Upload, $timeout, $state){
 		this.NewBoardApi = NewBoardApi;
 
 		this.data = [];
@@ -14,38 +14,23 @@ class newBoardController{
 		this.Upload = Upload;
 		this.$scope = $scope;
 		this.$timeout = $timeout;
+    this.$state = $state;
 	}
 
 	  uploadPic(file) {
       console.log("file",file);
       if(file && file.length){
-        file.upload = this.Upload.upload({
+        this.Upload.upload({
           url: 'http://localhost:3000/api/newBoard',
           method: 'POST',
           data: {name: this.$scope.name, shaper: this.$scope.shaper, feet: this.$scope.feet, inches: this.$scope.inches, width: this.$scope.width, thickness: this.$scope.thickness, fins: this.$scope.fins, surfboardImg: file, numOfFiles: file.length
           }
+        })
+        .then((res)=>{
+          console.log(res);
+          this.$state.go('boardsState');
         });
-        window.location.replace('/#!/boards');
       }
-
-      // file[0].upload.then((response) => {
-      // 	console.log(response);
-      //   this.$timeout(function () {
-      //     file[0].result = response.data;
-      //   });
-      // }, (response) => {
-      // 	console.log(response);
-      //   if (response.status > 0 || response.status == -1)
-      //     this.$scope.errorMsg = "Error message " + response.status + ': ' + response.data;
-      // }, (evt) => {
-      //   // Math.min is to fix IE which reports 200% sometimes
-      //   this.$scope.file[0].progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-      // })
-      // .then(() => {
-      // 	window.location.replace('/#!/test');
-      // });
-
-
     }
 }
 
