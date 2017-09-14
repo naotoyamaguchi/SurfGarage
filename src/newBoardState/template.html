@@ -31,6 +31,7 @@
 		<input type="file" ngf-select ng-model="files" ngf-multiple="true" name="boardImage" id="img"
 	         accept="image/*" ngf-max-size="2MB" required
 	         ngf-model-invalid="errorFile" multiple>
+	  <img ng-repeat="file in files" ngf-thumbnail="file">
 
 	  <span class="progress" ng-show="file.progress >= 0">
 	        <div style="width:{{file.progress}}%" 

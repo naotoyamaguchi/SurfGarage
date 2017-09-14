@@ -1,5 +1,18 @@
 <div id="mainDiv">
-	<h1>Board Name</h1>
-	<span>board detail</span>
-	<span>board detail</span>
+	<h1>{{detailCtrl.data.name}}</h1>
+	<span>Shaper: {{detailCtrl.data.shaper}}</span>
+	<br>
+	<span>Dims: {{detailCtrl.data.feet}}'{{detailCtrl.data.inches}} x {{detailCtrl.data.width}} x {{detailCtrl.data.thickness}} </span>
+	<br>
+	<span>Fin Boxes: {{detailCtrl.data.fins}}</span>
+	<ul class="gallery">
+		<li ng-repeat="image in detailCtrl.data.images" class="gallery-post">
+			<img ng-src="{{image.url}}">
+		</li>
+	</ul>
+<!-- 	<div ng-repeat="image in detailCtrl.data.images">
+		<img ng-src="{{image.url}}">
+	</div> -->
+
+
 </div>

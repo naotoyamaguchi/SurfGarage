@@ -7,7 +7,11 @@ class detailBoardController{
 		this.params = $stateParams;
 
 		this.data = [];
-		console.log(this.params);
+		this.DetailedBoardApi.getBoardApi(this.params.id)
+		.then(response => {
+			console.log(response.data);
+			this.data = response.data;
+		});
 	}
 
 	// delete(id){
@@ -22,5 +26,5 @@ class detailBoardController{
 export default {
 	template,
 	controller: detailBoardController,
-	controllerAs: 'detailBoardCtrl'
+	controllerAs: 'detailCtrl'
 };
