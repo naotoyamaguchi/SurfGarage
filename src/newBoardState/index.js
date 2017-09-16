@@ -7,9 +7,9 @@ class newBoardController{
 
 		this.data = [];
 
+    this.shaperOptions = ['Donald Takayama', 'Chris Christenson', 'Bing', 'Tyler Warren', 'Ryan Lovelace', 'Jeff McCallum'];
 		this.metricOptions = [0,1,2,3,4,5,6,7,8,9,10,11,12];
-
-		this.finOptions = [1,2,3,4,5,6];
+		this.finOptions = [1,2,3,4,5];
 
 		this.Upload = Upload;
 		this.$scope = $scope;

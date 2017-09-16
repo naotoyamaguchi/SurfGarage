@@ -1,0 +1,17 @@
+<div id="mainDiv">
+	<h1>Hello Edit State</h1>
+	<h1>{{editCtrl.data.name}}</h1>
+	<span>Shaper: {{editCtrl.data.shaper}}</span>
+	<br>
+	<span>Dims: {{editCtrl.data.feet}}'{{editCtrl.data.inches}} x {{editCtrl.data.width}} x {{editCtrl.data.thickness}} </span>
+	<br>
+	<span>Fin Boxes: {{editCtrl.data.fins}}</span>
+	<ul class="gallery">
+		<li ng-repeat="image in editCtrl.data.images" class="gallery-post">
+			<img ng-src="{{image.url}}" class="board-thumbnail">
+			<form ng-submit="editCtrl.chooseDefault(editCtrl.data.id, image.url)">
+				<input type="submit" value="Pick">
+			</form>
+		</li>
+	</ul>
+</div>

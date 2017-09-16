@@ -7,12 +7,11 @@
 	<span>Fin Boxes: {{detailCtrl.data.fins}}</span>
 	<ul class="gallery">
 		<li ng-repeat="image in detailCtrl.data.images" class="gallery-post">
-			<img ng-src="{{image.url}}">
+			<img ng-src="{{image.url}}" class="board-thumbnail">
+			<div class="hoverCover">
+				<span class="hoverText"></span>
+			</div>
 		</li>
 	</ul>
-<!-- 	<div ng-repeat="image in detailCtrl.data.images">
-		<img ng-src="{{image.url}}">
-	</div> -->
-
 
 </div>

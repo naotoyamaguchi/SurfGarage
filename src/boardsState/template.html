@@ -1,15 +1,32 @@
 <div id="mainDiv">
 	<div>
 		<h1>Boards</h1>
+		<div>
+			<input type="submit" ng-click="boardsCtrl.test()">
+			Shaper Filter:
+			<select type="select" ng-model="boardFilter.shaper" ng-options="shaper for shaper in boardsCtrl.shaperOptions"></select>
+			Fins Filter:
+			<select type="select" ng-model="boardFilter.fins" ng-options="fins.value as fins.string for fins in boardsCtrl.finOptions"></select>
+			Feet Filter:
+			<select type="select" ng-model="boardFilter.feet" ng-options="feet for feet in boardsCtrl.metricOptions"></select>
+		</div>
+		<br>
+		<br>
+		<div>
+			Showing boards currently with: {{boardsCtrl.fins}} fins, and {{boardsCtrl.feet}} ft
+		</div>
 		<ul class="gallery">
-			<li ng-repeat="board in boardsCtrl.data" class="gallery-post">
+			<li ng-repeat="board in boardsCtrl.data | filter:boardFilter" class="gallery-post">
 				<a ui-sref="detailedBoardState({id: '{{board.id}}'})">
-					<div class="board-thumbnail" ng-style="{'background-image': 'url(' + board.images[0].url + ')'}">
+					<div class="board-thumbnail" ng-style="{'background-image': 'url(' + {{ boardsCtrl.checkFeatured(board.featuredimg) ? 'board.featuredimg' : 'board.images[0].url' }} + ')'}">
 						<div class="hoverCover">
 							<span class="hoverText">{{board.feet}}'{{board.inches}} {{board.name}}</span>
 						</div>
 					</div>
 				</a>
+				<a href="" ng-click="boardsCtrl.delete(board.id)">Delete</a>
+				<br>
+				<a ui-sref="editBoardState({id: '{{board.id}}'})">Edit</a>
 			</li>
 		</ul>
 	</div>

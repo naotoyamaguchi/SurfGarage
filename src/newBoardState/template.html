@@ -29,7 +29,7 @@
 		<br>
 
 		<input type="file" ngf-select ng-model="files" ngf-multiple="true" name="boardImage" id="img"
-	         accept="image/*" ngf-max-size="2MB" required
+	         accept="image/png,image/jpg,image/jpeg,image/gif" ngf-max-size="2MB" required
 	         ngf-model-invalid="errorFile" multiple>
 	  <img ng-repeat="file in files" ngf-thumbnail="file">
 

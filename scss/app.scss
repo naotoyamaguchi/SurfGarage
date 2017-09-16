@@ -34,7 +34,9 @@ body {
 
 h1 {
   font-size: 2em;
-  margin-bottom: .5em;
+  margin-bottom: .2em;
+  padding-bottom: .5em;
+  border-bottom: 1px solid black;
 }
 
 ol, ul {
@@ -159,6 +161,8 @@ footer {
   max-width: 1270px;
   margin-left: auto;
   margin-right: auto;
+  padding-bottom: 2em;
+  border-bottom: 2.5px solid black;
 }
 
 .header-item {
