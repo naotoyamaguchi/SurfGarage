@@ -1,19 +1,56 @@
 <div id="mainDiv">
 	<div>
 		<h1>Boards</h1>
-		<div>
-			<input type="submit" ng-click="boardsCtrl.test()">
-			Shaper Filter:
-			<select type="select" ng-model="boardFilter.shaper" ng-options="shaper for shaper in boardsCtrl.shaperOptions"></select>
-			Fins Filter:
-			<select type="select" ng-model="boardFilter.fins" ng-options="fins.value as fins.string for fins in boardsCtrl.finOptions"></select>
-			Feet Filter:
-			<select type="select" ng-model="boardFilter.feet" ng-options="feet for feet in boardsCtrl.metricOptions"></select>
+		<div class="filterBar">
+			<div class="dropdown">
+				<h1>{{boardFilter.fins ? finsString : 'Fins'}}</h1>
+				<div class="dropdown-content">
+					<span ng-repeat="fins in boardsCtrl.finOptions">
+						<a href="" ng-click="boardsCtrl.setFinsFilter(fins.value, fins.string)">{{fins.string}}</a><br>
+					</span>
+				</div>
+			</div>
+
+			<div class="dropdown">
+				<h1>{{boardFilter.shaper ? shaperString : 'Shaper'}}</h1>
+				<div class="dropdown-content">
+					<span>
+<!-- 						setShaperFilter() takes in 'Shaper' to set the dropdown value to a default when passing through '!!'. Otherwise it takes in '!!' as the value to have in the dropdown header. -->
+						<a href="" ng-click="boardsCtrl.setShaperFilter('!!', 'Shaper')">Any</a>
+					</span>
+					<span ng-repeat="shaper in boardsCtrl.shaperOptions">
+						<a href="" ng-click="boardsCtrl.setShaperFilter(shaper, shaper)">{{shaper}}</a><br>
+					</span>
+				</div>
+			</div>
+
+			<div class="dropdown">
+				<h1>{{boardFilter.feet ? boardFilter.feet: 'feet'}}</h1>
+				<div class="dropdown-content">
+					<span ng-repeat="feet in boardsCtrl.metricOptions">
+						<a href="" ng-click="boardsCtrl.setFeetFilter(feet)">{{feet}}</a><br>
+					</span>
+				</div>
+			</div>
+
 		</div>
+<!-- 		<div>
+			Fins Filter:
+			<select type="select" ng-model="boardFilter.fins">
+				<option value="!!">Any</option>
+				<option ng-repeat="fins in boardsCtrl.finOptions" value="{{fins.value}}">{{fins.string}}</option>
+			</select>
+
+			Feet Filter:
+			<select type="select" ng-model="boardFilter.feet">
+				<option value="!!">Any</option>
+				<option ng-repeat="feet in boardsCtrl.metricOptions" value="{{feet}}">{{feet}}</option>
+			</select>
+		</div> -->
 		<br>
 		<br>
 		<div>
-			Showing boards currently with: {{boardsCtrl.fins}} fins, and {{boardsCtrl.feet}} ft
+			Showing boards currently with: {{boardFilter.fins}} fins, and {{boardFilter.feet}} ft, and shaped by {{boardFilter.shaper}}
 		</div>
 		<ul class="gallery">
 			<li ng-repeat="board in boardsCtrl.data | filter:boardFilter" class="gallery-post">

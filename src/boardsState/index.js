@@ -6,9 +6,12 @@ class boardsStateController{
 		this.BoardsApi = BoardsApi;
 		this.data = [];
 		this.$scope = $scope;
+		this.$scope.boardFilter = {};
+		this.$scope.finsString = {};
+		this.$scope.shaperString = "";
 		this.shaperOptions = ['Donald Takayama', 'Chris Christenson', 'Bing', 'Tyler Warren', 'Ryan Lovelace', 'Jeff McCallum'];
 		this.metricOptions = [0,1,2,3,4,5,6,7,8,9,10,11,12];
-		this.finOptions = [{value: 1, string: 'Single Fin'}, {value: 2, string: 'Twin Fin'}, {value: 3, string: 'Thruster & 2+1'}, {value: 4, string: 'Quad'}, {value: 5, string: '5 Fin Option'}];
+		this.finOptions = [{value: 1, string: 'Single Fin'}, {value: 2, string: 'Twin Fin'}, {value: 3, string: 'Thruster & 2+1'}, {value: 4, string: 'Quad'}, {value: 5, string: '5 Fin Option'}, {value: '!!', string: 'Any'}];
 		this.fins = null;
 		this.feet = null;
 
@@ -19,16 +22,21 @@ class boardsStateController{
 		});
 	}
 
-	test(){
-		console.log(this.$scope.fins);
+	setFinsFilter(input, string){
+		this.$scope.boardFilter.fins = input;
+		this.$scope.finsString = string;
+		console.log(this.$scope.boardFilter);
 	}
 
-	setFinFilter(num){
-		boardsStateController.fins = num;
+	setShaperFilter(input, string){
+		this.$scope.boardFilter.shaper = input;
+		this.$scope.shaperString = string;
+		console.log(this.$scope.boardFilter);
 	}
 
-	setFeetFilter(num){
-		boardsStateController.feet = num;
+	setFeetFilter(input){
+		this.$scope.boardFilter.feet = input;
+		console.log(this.$scope.boardFilter);
 	}
 
 	// boardFeetFilter(item){
