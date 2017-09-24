@@ -103,6 +103,26 @@ angular.module(MODULE_NAME, ['ui.router', 'ngAnimate', 'ngFileUpload'])
   .service('NewBoardApi', NewBoardApi)
   .service('editBoardApi', EditBoardApi)
   .service('DetailedBoardApi', DetailedBoardApi)
+  .filter('boardRange', function(){
+    return function(boards, scope){
+      var output = boards;
+      function conv(feet, inches){
+        return (feet*12) + inches;
+      }
+
+      if(scope.minFeet && scope.maxFeet){
+        output = boards.filter((board) => conv(board.feet, board.inches) >= scope.minFeet*12 && conv(board.feet, board.inches) < scope.maxFeet*12);
+      }
+      if(scope.minFeet && !scope.maxFeet){
+        output = boards.filter((board) => conv(board.feet, board.inches) >= scope.minFeet*12);
+      }
+      if(!scope.minFeet && scope.maxFeet){
+        output = boards.filter((board) => conv(board.feet, board.inches) <= scope.maxFeet*12);
+      }
+
+      return output;
+    };
+  })
   .controller('AppCtrl', AppCtrl);
 
 export default MODULE_NAME;

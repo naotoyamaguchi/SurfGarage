@@ -6,12 +6,16 @@ class boardsStateController{
 		this.BoardsApi = BoardsApi;
 		this.data = [];
 		this.$scope = $scope;
+		this.$filter = $filter;
+		this.$scope.minFeet = null;
+		this.$scope.maxFeet = null;
 		this.$scope.boardFilter = {};
 		this.$scope.finsString = {};
 		this.$scope.shaperString = "";
 		this.shaperOptions = ['Donald Takayama', 'Chris Christenson', 'Bing', 'Tyler Warren', 'Ryan Lovelace', 'Jeff McCallum'];
+		this.feetOptions = [4,5,6,7,8,9,10,11,12];
 		this.metricOptions = [0,1,2,3,4,5,6,7,8,9,10,11,12];
-		this.finOptions = [{value: 1, string: 'Single Fin'}, {value: 2, string: 'Twin Fin'}, {value: 3, string: 'Thruster & 2+1'}, {value: 4, string: 'Quad'}, {value: 5, string: '5 Fin Option'}, {value: '!!', string: 'Any'}];
+		this.finOptions = [{value: '!!', string: 'All'}, {value: 1, string: 'Single Fin'}, {value: 2, string: 'Twin Fin'}, {value: 3, string: 'Thruster & 2+1'}, {value: 4, string: 'Quad'}, {value: 5, string: '5 Fin Option'}, ];
 		this.fins = null;
 		this.feet = null;
 
@@ -26,6 +30,8 @@ class boardsStateController{
 		this.$scope.boardFilter.fins = input;
 		this.$scope.finsString = string;
 		console.log(this.$scope.boardFilter);
+		console.log(this.data);
+		console.log(this.$scope.filteredBoards);
 	}
 
 	setShaperFilter(input, string){
@@ -39,13 +45,29 @@ class boardsStateController{
 		console.log(this.$scope.boardFilter);
 	}
 
-	// boardFeetFilter(item){
-	// 	if(this.$scope.fins === null || this.$scope.fins === undefined){
-	// 		return item;
-	// 	} else {
-	// 		return item.feet === boardsStateController.feet;
-	// 	}
-	// }
+	setMinFilter(input){
+		this.$scope.minFeet = input;
+		console.log(this.$scope.minFeet);
+	}
+
+	setMaxFilter(input){
+		this.$scope.maxFeet = input;
+		console.log(this.$scope.maxFeet);
+	}
+
+	sizeFilter(board){
+	  var ret = true;
+
+	  if(this.$scope.minFeet && this.$scope.minFeet > board.feet) {
+	    ret = false;
+	  }
+
+	  if(this.$scope.maxFeet && this.$scope.maxFeet < board.feet) {
+	    ret = false;
+	  }
+
+	  return ret;
+	}
 
 	boardFinFilter(item){
 		if(boardsStateController.$scope.fins === null || boardsStateController.$scope.fins === undefined){

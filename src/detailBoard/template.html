@@ -5,13 +5,64 @@
 	<span>Dims: {{detailCtrl.data.feet}}'{{detailCtrl.data.inches}} x {{detailCtrl.data.width}} x {{detailCtrl.data.thickness}} </span>
 	<br>
 	<span>Fin Boxes: {{detailCtrl.data.fins}}</span>
-	<ul class="gallery">
+	<!-- <ul class="gallery">
 		<li ng-repeat="image in detailCtrl.data.images" class="gallery-post">
 			<img ng-src="{{image.url}}" class="board-thumbnail">
 			<div class="hoverCover">
 				<span class="hoverText"></span>
 			</div>
 		</li>
-	</ul>
+	</ul> -->
+	<div class="asdf">
+		
+		<div class="slider slider-for">
+			<<!-- div ng-repeat="image in detailCtrl.data.images">
+				<img ng-src="{{image.url}}" alt="">
+			</div> -->
+			<div>
+				<img src="https://surf-garage.s3-us-west-1.amazonaws.com/surfboards/1505960994382/sb4.jpeg" alt="">
+			</div>
+			<div>
+				<img src="https://surf-garage.s3-us-west-1.amazonaws.com/surfboards/1505960994349/sb2.jpeg" alt="">
+			</div>
+			<div>
+				<img src="https://surf-garage.s3-us-west-1.amazonaws.com/surfboards/1505960994388/sb7.jpg" alt="">
+			</div>
+		</div>
 
+		<div class="slider slider-nav">
+			<!-- <div ng-repeat="image in detailCtrl.data.images">
+				<img ng-src="{{image.url}}" alt="">
+			</div> -->
+			<div>
+				<img src="https://surf-garage.s3-us-west-1.amazonaws.com/surfboards/1505960994382/sb4.jpeg" alt="">
+			</div>
+			<div>
+				<img src="https://surf-garage.s3-us-west-1.amazonaws.com/surfboards/1505960994349/sb2.jpeg" alt="">
+			</div>
+			<div>
+				<img src="https://surf-garage.s3-us-west-1.amazonaws.com/surfboards/1505960994388/sb7.jpg" alt="">
+			</div>
+		</div>
+
+	</div>
+	<script>
+		$(document).ready(function(){
+		   $('.slider-for').slick({
+		    slidesToShow: 1,
+		    slidesToScroll: 1,
+		    arrows: false,
+		    fade: true,
+		    asNavFor: '.slider-nav'
+		  });
+		  $('.slider-nav').slick({
+		    slidesToShow: 3,
+		    slidesToScroll: 1,
+		    asNavFor: '.slider-for',
+		    dots: true,
+		    centerMode: true,
+		    focusOnSelect: true
+		  });
+		});
+	</script>
 </div>

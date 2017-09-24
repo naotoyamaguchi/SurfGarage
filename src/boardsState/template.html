@@ -1,59 +1,71 @@
 <div id="mainDiv">
-	<div>
-		<h1>Boards</h1>
 		<div class="filterBar">
+			<span class="dropdown-desc">Shaper: </span>
 			<div class="dropdown">
-				<h1>{{boardFilter.fins ? finsString : 'Fins'}}</h1>
+				<span class="dropdown-selected">{{boardFilter.shaper ? shaperString : 'All ˅'}}</span>
 				<div class="dropdown-content">
-					<span ng-repeat="fins in boardsCtrl.finOptions">
+					<span class="dropdown-item">
+<!-- 						setShaperFilter() takes in 'Shaper' to set the dropdown value to a default when passing through '!!'. Otherwise it takes in '!!' as the value to have in the dropdown header. -->
+						<a href="" ng-click="boardsCtrl.setShaperFilter('!!', 'All')">All</a><br>
+					</span>
+					<span class="dropdown-item" ng-repeat="shaper in boardsCtrl.shaperOptions">
+						<a href="" ng-click="boardsCtrl.setShaperFilter(shaper, shaper)">{{shaper}}</a><br>
+					</span>
+				</div>
+			</div>
+			
+			<span class="dropdown-desc">Fins: </span>
+			<div class="dropdown">
+				<span class="dropdown-selected">{{boardFilter.fins ? finsString : 'All'}}</span>
+				<div class="dropdown-content">
+					<span class="dropdown-item" ng-repeat="fins in boardsCtrl.finOptions">
 						<a href="" ng-click="boardsCtrl.setFinsFilter(fins.value, fins.string)">{{fins.string}}</a><br>
 					</span>
 				</div>
 			</div>
 
-			<div class="dropdown">
-				<h1>{{boardFilter.shaper ? shaperString : 'Shaper'}}</h1>
-				<div class="dropdown-content">
-					<span>
-<!-- 						setShaperFilter() takes in 'Shaper' to set the dropdown value to a default when passing through '!!'. Otherwise it takes in '!!' as the value to have in the dropdown header. -->
-						<a href="" ng-click="boardsCtrl.setShaperFilter('!!', 'Shaper')">Any</a>
-					</span>
-					<span ng-repeat="shaper in boardsCtrl.shaperOptions">
-						<a href="" ng-click="boardsCtrl.setShaperFilter(shaper, shaper)">{{shaper}}</a><br>
-					</span>
-				</div>
-			</div>
 
-			<div class="dropdown">
-				<h1>{{boardFilter.feet ? boardFilter.feet: 'feet'}}</h1>
+<!-- 			<div class="dropdown">
+				<span class="dropdown-selected">{{boardFilter.feet ? boardFilter.feet + 'ft': 'Feet'}}</span>
 				<div class="dropdown-content">
-					<span ng-repeat="feet in boardsCtrl.metricOptions">
+					<span ng-repeat="feet in boardsCtrl.feetOptions">
 						<a href="" ng-click="boardsCtrl.setFeetFilter(feet)">{{feet}}</a><br>
 					</span>
 				</div>
+			</div> -->
+			<span class="dropdown-desc">Min Feet: </span>
+			<div class="dropdown">
+				<span class="dropdown-selected">{{minFeet ? minFeet + 'ft': 'None'}}</span>
+				<div class="dropdown-content">
+					<span class="dropdown-item">
+						<a href="" ng-click="boardsCtrl.setMinFilter(null)">None</a><br>
+					</span>
+					<span class="dropdown-item" ng-repeat="feet in boardsCtrl.feetOptions">
+						<a href="" ng-click="boardsCtrl.setMinFilter(feet)">{{feet}}</a><br>
+					</span>
+				</div>
+			</div>
+
+			<span class="dropdown-desc">Max Feet: </span>
+			<div class="dropdown">
+				<span class="dropdown-selected">{{maxFeet ? maxFeet + 'ft': 'None'}}</span>
+				<div class="dropdown-content">
+					<span class="dropdown-item">
+						<a href="" ng-click="boardsCtrl.setMaxFilter(null)">None</a><br>
+					</span>
+					<span class="dropdown-item" ng-repeat="feet in boardsCtrl.feetOptions">
+						<a href="" ng-click="boardsCtrl.setMaxFilter(feet)">{{feet}}</a><br>
+					</span>
+				</div>
 			</div>
 
 		</div>
-<!-- 		<div>
-			Fins Filter:
-			<select type="select" ng-model="boardFilter.fins">
-				<option value="!!">Any</option>
-				<option ng-repeat="fins in boardsCtrl.finOptions" value="{{fins.value}}">{{fins.string}}</option>
-			</select>
 
-			Feet Filter:
-			<select type="select" ng-model="boardFilter.feet">
-				<option value="!!">Any</option>
-				<option ng-repeat="feet in boardsCtrl.metricOptions" value="{{feet}}">{{feet}}</option>
-			</select>
-		</div> -->
-		<br>
-		<br>
-		<div>
-			Showing boards currently with: {{boardFilter.fins}} fins, and {{boardFilter.feet}} ft, and shaped by {{boardFilter.shaper}}
-		</div>
+		<!-- <h1>Boards</h1> -->
+
+		<div class="boards-error" ng-show="!filteredBoards.length">No matches. Broaden your search for more results.</div>
 		<ul class="gallery">
-			<li ng-repeat="board in boardsCtrl.data | filter:boardFilter" class="gallery-post">
+			<li ng-repeat="board in (filteredBoards = (boardsCtrl.data | filter:boardFilter | boardRange:this))" class="gallery-post">
 				<a ui-sref="detailedBoardState({id: '{{board.id}}'})">
 					<div class="board-thumbnail" ng-style="{'background-image': 'url(' + {{ boardsCtrl.checkFeatured(board.featuredimg) ? 'board.featuredimg' : 'board.images[0].url' }} + ')'}">
 						<div class="hoverCover">
@@ -66,5 +78,4 @@
 				<a ui-sref="editBoardState({id: '{{board.id}}'})">Edit</a>
 			</li>
 		</ul>
-	</div>
 </div>
