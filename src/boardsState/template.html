@@ -2,25 +2,37 @@
 		<div class="filterBar">
 			<span class="dropdown-desc">Shaper: </span>
 			<div class="dropdown">
-				<span class="dropdown-selected">{{boardFilter.shaper ? shaperString : 'All ˅'}}</span>
+				<!-- <span class="dropdown-selected">{{boardFilter.shaper ? shaperString : 'All'}}</span> -->
+				<span class="dropdown-selected" ng-if="boardFilter.shaper && boardFilter.shaper !== '!!'">
+					<a class="dropdown-selected" ng-click="boardsCtrl.setShaperFilter('!!', 'All')" href="">{{shaperString}}<img class="dropdown-selected" id="select-icon" src="https://cdn.pixabay.com/photo/2016/10/10/01/49/x-1727490_1280.png" alt=""></a>
+				</span>
+				<span class="dropdown-selected" ng-if="!boardFilter.shaper || boardFilter.shaper =='!!'">
+					All<img class="dropdown-selected" id="select-icon" src="http://www.pngmart.com/files/3/Down-Arrow-PNG-File.png" alt="">
+				</span>
 				<div class="dropdown-content">
 					<span class="dropdown-item">
 <!-- 						setShaperFilter() takes in 'Shaper' to set the dropdown value to a default when passing through '!!'. Otherwise it takes in '!!' as the value to have in the dropdown header. -->
 						<a href="" ng-click="boardsCtrl.setShaperFilter('!!', 'All')">All</a><br>
 					</span>
-					<span class="dropdown-item" ng-repeat="shaper in boardsCtrl.shaperOptions">
-						<a href="" ng-click="boardsCtrl.setShaperFilter(shaper, shaper)">{{shaper}}</a><br>
-					</span>
+					<div class="dropdown-item" ng-repeat="shaper in boardsCtrl.shaperOptions" ng-click="boardsCtrl.setShaperFilter(shaper, shaper)">
+						<a href="">{{shaper}}</a><br>
+					</div>
 				</div>
 			</div>
 			
 			<span class="dropdown-desc">Fins: </span>
 			<div class="dropdown">
-				<span class="dropdown-selected">{{boardFilter.fins ? finsString : 'All'}}</span>
+				<!-- <span class="dropdown-selected">{{boardFilter.fins ? finsString : 'All'}}</span> -->
+				<span class="dropdown-selected" ng-if="boardFilter.fins && boardFilter.fins !== '!!'">
+					<a class="dropdown-selected" ng-click="boardsCtrl.setFinsFilter('!!', 'All')" href="">{{finsString}}<img class="dropdown-selected" id="select-icon" src="https://cdn.pixabay.com/photo/2016/10/10/01/49/x-1727490_1280.png" alt=""></a>
+				</span>
+				<span class="dropdown-selected" ng-if="!boardFilter.fins || boardFilter.fins =='!!'">
+					All<img class="dropdown-selected" id="select-icon" src="http://www.pngmart.com/files/3/Down-Arrow-PNG-File.png" alt="">
+				</span>
 				<div class="dropdown-content">
-					<span class="dropdown-item" ng-repeat="fins in boardsCtrl.finOptions">
-						<a href="" ng-click="boardsCtrl.setFinsFilter(fins.value, fins.string)">{{fins.string}}</a><br>
-					</span>
+					<div class="dropdown-item" ng-repeat="fins in boardsCtrl.finOptions" ng-click="boardsCtrl.setFinsFilter(fins.value, fins.string)">
+						<a href="" >{{fins.string}}</a><br>
+					</div>
 				</div>
 			</div>
 
@@ -35,27 +47,39 @@
 			</div> -->
 			<span class="dropdown-desc">Min Feet: </span>
 			<div class="dropdown">
-				<span class="dropdown-selected">{{minFeet ? minFeet + 'ft': 'None'}}</span>
+				<!-- <span class="dropdown-selected">{{minFeet ? minFeet + 'ft': 'None'}}</span> -->
+				<span class="dropdown-selected" ng-if="minFeet && minFeet !== '!!'">
+					<a class="dropdown-selected" ng-click="boardsCtrl.setMinFilter(null)" href="">{{minFeet}} ft<img class="dropdown-selected" id="select-icon" src="https://cdn.pixabay.com/photo/2016/10/10/01/49/x-1727490_1280.png" alt=""></a>
+				</span>
+				<span class="dropdown-selected" ng-if="!minFeet || minFeet =='!!'">
+					All<img class="dropdown-selected" id="select-icon" src="http://www.pngmart.com/files/3/Down-Arrow-PNG-File.png" alt="">
+				</span>
 				<div class="dropdown-content">
-					<span class="dropdown-item">
-						<a href="" ng-click="boardsCtrl.setMinFilter(null)">None</a><br>
-					</span>
-					<span class="dropdown-item" ng-repeat="feet in boardsCtrl.feetOptions">
-						<a href="" ng-click="boardsCtrl.setMinFilter(feet)">{{feet}}</a><br>
-					</span>
+					<div class="dropdown-item" ng-click="boardsCtrl.setMinFilter(null)">
+						<a href="">None</a><br>
+					</div>
+					<div class="dropdown-item" ng-repeat="feet in boardsCtrl.feetOptions" ng-click="boardsCtrl.setMinFilter(feet)">
+						<a href="">{{feet}}</a><br>
+					</div>
 				</div>
 			</div>
 
 			<span class="dropdown-desc">Max Feet: </span>
 			<div class="dropdown">
-				<span class="dropdown-selected">{{maxFeet ? maxFeet + 'ft': 'None'}}</span>
+				<!-- <span class="dropdown-selected">{{maxFeet ? maxFeet + 'ft': 'None'}}</span> -->
+				<span class="dropdown-selected" ng-if="maxFeet && maxFeet !== '!!'">
+					<a class="dropdown-selected" ng-click="boardsCtrl.setMaxFilter(null)" href="">{{maxFeet}} ft<img class="dropdown-selected" id="select-icon" src="https://cdn.pixabay.com/photo/2016/10/10/01/49/x-1727490_1280.png" alt=""></a>
+				</span>
+				<span class="dropdown-selected" ng-if="!maxFeet || maxFeet =='!!'">
+					All<img class="dropdown-selected" id="select-icon" src="http://www.pngmart.com/files/3/Down-Arrow-PNG-File.png" alt="">
+				</span>
 				<div class="dropdown-content">
-					<span class="dropdown-item">
-						<a href="" ng-click="boardsCtrl.setMaxFilter(null)">None</a><br>
-					</span>
-					<span class="dropdown-item" ng-repeat="feet in boardsCtrl.feetOptions">
-						<a href="" ng-click="boardsCtrl.setMaxFilter(feet)">{{feet}}</a><br>
-					</span>
+					<div class="dropdown-item" ng-click="boardsCtrl.setMaxFilter(null)">
+						<a href="">None</a><br>
+					</div>
+					<div class="dropdown-item" ng-repeat="feet in boardsCtrl.feetOptions"  ng-click="boardsCtrl.setMaxFilter(feet)">
+						<a href="">{{feet}}</a><br>
+					</div>
 				</div>
 			</div>
 
@@ -73,8 +97,7 @@
 						</div>
 					</div>
 				</a>
-				<a href="" ng-click="boardsCtrl.delete(board.id)">Delete</a>
-				<br>
+				<a href="" ng-click="boardsCtrl.delete(board.id)">Delete </a>
 				<a ui-sref="editBoardState({id: '{{board.id}}'})">Edit</a>
 			</li>
 		</ul>

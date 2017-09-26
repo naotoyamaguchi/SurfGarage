@@ -1,10 +1,5 @@
-<div id="mainDiv">
-	<h1>{{detailCtrl.data.name}}</h1>
-	<span>Shaper: {{detailCtrl.data.shaper}}</span>
-	<br>
-	<span>Dims: {{detailCtrl.data.feet}}'{{detailCtrl.data.inches}} x {{detailCtrl.data.width}} x {{detailCtrl.data.thickness}} </span>
-	<br>
-	<span>Fin Boxes: {{detailCtrl.data.fins}}</span>
+<div class="detailBoard">
+
 	<!-- <ul class="gallery">
 		<li ng-repeat="image in detailCtrl.data.images" class="gallery-post">
 			<img ng-src="{{image.url}}" class="board-thumbnail">
@@ -13,41 +8,31 @@
 			</div>
 		</li>
 	</ul> -->
-	<div class="asdf">
 		
-		<div class="slider slider-for">
-			<<!-- div ng-repeat="image in detailCtrl.data.images">
-				<img ng-src="{{image.url}}" alt="">
-			</div> -->
-			<div>
-				<img src="https://surf-garage.s3-us-west-1.amazonaws.com/surfboards/1505960994382/sb4.jpeg" alt="">
-			</div>
-			<div>
-				<img src="https://surf-garage.s3-us-west-1.amazonaws.com/surfboards/1505960994349/sb2.jpeg" alt="">
-			</div>
-			<div>
-				<img src="https://surf-garage.s3-us-west-1.amazonaws.com/surfboards/1505960994388/sb7.jpg" alt="">
-			</div>
+	<div class="slider-for">
+		<div class="board-slider-main" ng-repeat="image in detailCtrl.data.images" ng-style="{'background-image': 'url(' + {{ 'image.url' }} + ')'}">
+			<img id="fake-display" ng-src="{{image.url}}" alt="">
 		</div>
-
-		<div class="slider slider-nav">
-			<!-- <div ng-repeat="image in detailCtrl.data.images">
-				<img ng-src="{{image.url}}" alt="">
-			</div> -->
-			<div>
-				<img src="https://surf-garage.s3-us-west-1.amazonaws.com/surfboards/1505960994382/sb4.jpeg" alt="">
-			</div>
-			<div>
-				<img src="https://surf-garage.s3-us-west-1.amazonaws.com/surfboards/1505960994349/sb2.jpeg" alt="">
-			</div>
-			<div>
-				<img src="https://surf-garage.s3-us-west-1.amazonaws.com/surfboards/1505960994388/sb7.jpg" alt="">
-			</div>
-		</div>
-
 	</div>
+
+	<div class="detailBoard-right-column">
+		<div class="board-description">
+			<h1>{{detailCtrl.data.shaper}}</h1>
+			<h3>{{detailCtrl.data.name}}</h3>
+			<p>{{detailCtrl.data.feet}}'{{detailCtrl.data.inches}} x {{detailCtrl.data.width}} x {{detailCtrl.data.thickness}} </p>		
+<!-- 			<p>Fin Boxes: {{detailCtrl.data.fins}}</p> -->
+		</div>
+
+		<div class="slider-nav">
+			<div class="board-slider-thumbnails" ng-repeat="image in detailCtrl.data.images" ng-style="{'background-image': 'url(' + {{ 'image.url' }} + ')'}">
+	<!-- 				<img ng-src="{{image.url}}" alt=""> -->
+			</div>
+		</div>
+	</div>
+
+
 	<script>
-		$(document).ready(function(){
+		$(document).ready(setTimeout(function(){
 		   $('.slider-for').slick({
 		    slidesToShow: 1,
 		    slidesToScroll: 1,
@@ -56,13 +41,18 @@
 		    asNavFor: '.slider-nav'
 		  });
 		  $('.slider-nav').slick({
-		    slidesToShow: 3,
-		    slidesToScroll: 1,
+		  	// outEdgeLimit: true,
+		  	// placeHolders: false,
+		  	// infinite: true,
+		  	variableWidth: true,
+		  	infinite: true,
+		  	arrows: true,
+		    slidesToShow: 1,
 		    asNavFor: '.slider-for',
 		    dots: true,
 		    centerMode: true,
 		    focusOnSelect: true
 		  });
-		});
+		}, 500));
 	</script>
 </div>

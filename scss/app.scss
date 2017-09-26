@@ -192,6 +192,12 @@ footer {
   // border: 1px solid green;
 }
 
+#select-icon {
+  margin-left: 5px;
+  width: 9px;
+  height: 8px;
+}
+
 .dropdown {
   font-size: 12px;
   // min-width: 100px;
@@ -464,4 +470,60 @@ form .progress{
   display: block;
   transition: .5s ease;
   backface-visibility: hidden;
+}
+
+#fake-display {
+  opacity: 0;
+}
+
+.detailBoard {
+  max-width: $page-width;
+  // border: 2px solid black;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 3vw; 
+  display: flex;
+  flex-direction: row;
+}
+
+.detailBoard-right-column {
+  margin-left: 50px;
+  width: $page-width - 650px;
+  // background-color: green;
+}
+
+.board-description {
+  // background-color: pink;
+  opacity: 0.8;
+}
+
+.board-slider-main {
+  height: 600px;
+  width: 600px;
+  background: no-repeat center center;
+  background-size: cover;
+}
+
+.slider-for {
+  width: 600px;
+  // border: 3px solid blue;
+}
+
+.slider-nav {
+  margin-top: 2em;
+  width: 100%;
+  // background-color: lime;
+  // border: 3px solid red;
+}
+
+.board-slider-thumbnails {
+  background: no-repeat center center;
+  background-size: cover;
+  height: 100px;
+  width: 100px !important;
+  opacity: 1;
+  display: block;
+  margin: 0 3px;
 }

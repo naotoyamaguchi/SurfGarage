@@ -221,6 +221,11 @@ footer {
 .filterBar {
   display: flex; }
 
+#select-icon {
+  margin-left: 5px;
+  width: 9px;
+  height: 8px; }
+
 .dropdown {
   font-size: 12px;
   display: inline-block;
@@ -438,3 +443,45 @@ form .progress {
   display: block;
   transition: .5s ease;
   backface-visibility: hidden; }
+
+#fake-display {
+  opacity: 0; }
+
+.detailBoard {
+  max-width: 1000px;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 3vw;
+  display: flex;
+  flex-direction: row; }
+
+.detailBoard-right-column {
+  margin-left: 50px;
+  width: 350px; }
+
+.board-description {
+  opacity: 0.8; }
+
+.board-slider-main {
+  height: 600px;
+  width: 600px;
+  background: no-repeat center center;
+  background-size: cover; }
+
+.slider-for {
+  width: 600px; }
+
+.slider-nav {
+  margin-top: 2em;
+  width: 100%; }
+
+.board-slider-thumbnails {
+  background: no-repeat center center;
+  background-size: cover;
+  height: 100px;
+  width: 100px !important;
+  opacity: 1;
+  display: block;
+  margin: 0 3px; }

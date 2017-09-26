@@ -10,7 +10,7 @@
 		<li ng-repeat="image in editCtrl.data.images" class="gallery-post">
 			<img ng-src="{{image.url}}" class="board-thumbnail">
 			<form ng-submit="editCtrl.chooseDefault(editCtrl.data.id, image.url)">
-				<input type="submit" value="Pick">
+				<input type="submit" value="Pick as default picture">
 			</form>
 		</li>
 	</ul>
