@@ -3,6 +3,7 @@
 @import "./partials/general_styles";
 
 $page-width: 1000px;
+$mobile: "only screen and (max-width: 480px)";
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -33,11 +34,19 @@ body {
   line-height: 1;
   font-family: 'Nunito', sans-serif;
   color: #62656D;
+  background-color: #FDFDFD;
+
+  @include respond-to('handheld'){
+    // background-color: red;
+  }
 }
 
 h1 {
   font-size: 1.5em;
   margin-bottom: .5em;
+  @include respond-to('handheld'){
+    margin-bottom: .2em;
+  }
 }
 
 h3 {
@@ -118,10 +127,6 @@ input[type=submit]:hover {
   box-sizing: border-box;
 }
 
-body{
-  background-color: #FDFDFD;
-}
-
 ul {
   margin: 0;
   padding: 0;
@@ -174,16 +179,28 @@ footer {
 .aboutDiv {
   display: flex;
   width: 100%;
+  @include respond-to('handheld'){
+    display: block;
+  }
 }
 
 .about-img {
   width: 100%;
+  @include respond-to('handheld'){
+    width: 95%;
+    margin: 0 auto;
+  }
 }
 
 .about-text {
   width: 100%;
   margin-left: 2em;
   text-align: left;
+  @include respond-to('handheld'){
+    text-align: center;
+    margin-top: 0.5em;
+    width: 80%;
+  }
 }
 
 .filterBar {
@@ -312,11 +329,22 @@ nav {
   margin-right: auto;
   padding-bottom: 1em;
   border-bottom: 1px solid gray;
+}
 
+iframe {
+  width: 650px;
+  height: 350px;
+  @include respond-to('handheld'){
+    width: 300px;
+    height: 200px; 
+  }
 }
 
 #header-logo {
   width: 25%;
+  @include respond-to('handheld'){
+    width: 60%;
+  }
 }
 
 .header {
@@ -328,6 +356,9 @@ nav {
   display: block;
   display: inline;
   font-size: 1em;
+  @include respond-to('handheld'){
+    font-size: 0.80em;
+  }
 }
 
 .header-item a{
@@ -398,14 +429,18 @@ form .progress{
 }
 
 .gallery-post {
-  width: 45%;
+  width: 48%;
   /*border: 2px solid red;*/
-  margin-left: 2.5%;
-  margin-right: 2.5%;
+  margin-left: 1%;
+  margin-right: 1%;
   margin-top: 1em;
   height: 400px;
   box-shadow: 3px 3px 5px 0px rgba(148,148,148,1);
   position: relative;
+  @include respond-to('handheld'){
+    width: 100%;
+    height: 350px;
+  }
 }
 
 .hoverCover {
@@ -444,12 +479,20 @@ form .progress{
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  @include respond-to('handheld'){
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 
 .contact-info {
   // border: 1px solid blue;
   text-align: left;
   width: 25%;
+  @include respond-to('handheld'){
+    width: 300px;
+    margin: 0 auto;
+  }
 }
 
 .google-map {
@@ -474,6 +517,11 @@ form .progress{
 
 #fake-display {
   opacity: 0;
+  @include respond-to('handheld'){
+    width: 300px !important;
+    height: 300px !important;
+    margin: 0 auto;
+  }
 }
 
 .detailBoard {
@@ -486,12 +534,20 @@ form .progress{
   margin-bottom: 3vw; 
   display: flex;
   flex-direction: row;
+  @include respond-to('handheld'){
+    flex-direction: column;
+    max-width: 300px;
+  }
 }
 
 .detailBoard-right-column {
   margin-left: 50px;
   width: $page-width - 650px;
-  // background-color: green;
+  @include respond-to('handheld'){
+    margin-top: 0.5em;
+    margin-left: 1em;
+    width: 300px;
+  }
 }
 
 .board-description {
@@ -504,16 +560,30 @@ form .progress{
   width: 600px;
   background: no-repeat center center;
   background-size: cover;
+  @include respond-to('handheld'){
+    width: 300px;
+    height: 300px;
+    // margin: 0 auto;
+    // background: no-repeat center center;
+    // background-size: cover;
+  }
 }
 
 .slider-for {
   width: 600px;
+  @include respond-to('handheld'){
+    max-width: 260px;
+    margin: 0 auto;
+  }
   // border: 3px solid blue;
 }
 
 .slider-nav {
   margin-top: 2em;
   width: 100%;
+  @include respond-to('handheld'){
+    display: none;
+  }
   // background-color: lime;
   // border: 3px solid red;
 }
@@ -526,4 +596,8 @@ form .progress{
   opacity: 1;
   display: block;
   margin: 0 3px;
+}
+
+.slick-prev:before, .slick-next:before {
+  color: #62656D;
 }

@@ -11,6 +11,8 @@ import boardsState from '../boardsState';
 import newBoardState from '../newBoardState';
 import detailedBoardState from '../detailBoard';
 import editBoardState from '../editBoardState';
+import rentalState from '../rentalState';
+import storageState from '../storageState';
 import EditBoardApi from '../editBoardState/service.js';
 import BoardsApi from '../boardsState/service.js';
 import NewBoardApi from '../newBoardState/service.js';
@@ -85,6 +87,16 @@ angular.module(MODULE_NAME, ['ui.router', 'ngAnimate', 'ngFileUpload'])
       name: 'editBoardState',
       url: '/boards/:id/edit',
       component: 'editBoardState'
+    })
+    .state({
+      name: 'rentalState',
+      url: '/rentals',
+      component: 'rentalState'
+    })
+    .state({
+      name: 'storageState',
+      url: '/storage',
+      component: 'storageState'
     });
   })
   .directive('app', app)
@@ -97,6 +109,8 @@ angular.module(MODULE_NAME, ['ui.router', 'ngAnimate', 'ngFileUpload'])
   .component('newBoardState', newBoardState)
   .component('detailedBoardState', detailedBoardState)
   .component('editBoardState', editBoardState)
+  .component('rentalState', rentalState)
+  .component('storageState', storageState)
   .service('LoginApi', LoginApi)
   .service('NewUserApi', NewUserApi)
   .service('BoardsApi', BoardsApi)

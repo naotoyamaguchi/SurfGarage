@@ -1,17 +1,8 @@
 <div class="detailBoard">
-
-	<!-- <ul class="gallery">
-		<li ng-repeat="image in detailCtrl.data.images" class="gallery-post">
-			<img ng-src="{{image.url}}" class="board-thumbnail">
-			<div class="hoverCover">
-				<span class="hoverText"></span>
-			</div>
-		</li>
-	</ul> -->
 		
 	<div class="slider-for">
 		<div class="board-slider-main" ng-repeat="image in detailCtrl.data.images" ng-style="{'background-image': 'url(' + {{ 'image.url' }} + ')'}">
-			<img id="fake-display" ng-src="{{image.url}}" alt="">
+			<!-- <img id="fake-display" ng-src="{{image.url}}" alt=""> -->
 		</div>
 	</div>
 
@@ -36,9 +27,10 @@
 		   $('.slider-for').slick({
 		    slidesToShow: 1,
 		    slidesToScroll: 1,
-		    arrows: false,
+		    arrows: true,
 		    fade: true,
-		    asNavFor: '.slider-nav'
+		    asNavFor: '.slider-nav',
+		    mobileFirst: true
 		  });
 		  $('.slider-nav').slick({
 		  	// outEdgeLimit: true,
@@ -51,7 +43,8 @@
 		    asNavFor: '.slider-for',
 		    dots: true,
 		    centerMode: true,
-		    focusOnSelect: true
+		    focusOnSelect: true,
+		    mobileFirst: true
 		  });
 		}, 500));
 	</script>
