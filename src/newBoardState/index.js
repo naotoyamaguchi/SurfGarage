@@ -2,7 +2,8 @@ import angular from 'angular';
 import template from './template.html';
 
 class newBoardController{
-	constructor($scope, NewBoardApi, Upload, $timeout, $state){
+  /* @ngInject */
+  constructor($scope, NewBoardApi, Upload, $timeout, $state){
 		this.NewBoardApi = NewBoardApi;
 
 		this.data = [];

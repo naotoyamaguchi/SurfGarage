@@ -1,4 +1,5 @@
 export default class editBoardApi {
+	/* @ngInject */
 	constructor($http, $window){
 		this.$http = $http;
 		this.data = [];

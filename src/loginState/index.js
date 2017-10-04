@@ -2,6 +2,7 @@ import angular from 'angular';
 import template from './template.html';
 
 class loginStateController{
+	/* @ngInject */
 	constructor($window, LoginApi){
 		this.test = "Hello World";
 		this.LoginApi = LoginApi;

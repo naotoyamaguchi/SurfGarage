@@ -1,4 +1,5 @@
 export default class DetailedBoardApi {
+	/* @ngInject */
 	constructor($http, $window){
 		this.$http = $http;
 		this.data = [];

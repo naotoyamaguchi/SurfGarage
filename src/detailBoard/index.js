@@ -2,6 +2,7 @@ import angular from 'angular';
 import template from './template.html';
 
 class detailBoardController{
+	/* @ngInject */
 	constructor(DetailedBoardApi, $stateParams){
 		this.DetailedBoardApi = DetailedBoardApi;
 		this.params = $stateParams;

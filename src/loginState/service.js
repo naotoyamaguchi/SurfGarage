@@ -1,4 +1,5 @@
 export default class LoginApi {
+	/* @ngInject */
 	constructor($location, $http){
 		this.$http = $http;
 		this.$location = $location;

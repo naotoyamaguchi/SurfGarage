@@ -1,4 +1,5 @@
 export default class NewBoardApi {
+	/* @ngInject */
 	constructor($location, $http, $window){
 		this.$http = $http;
 		this.$location = $location;

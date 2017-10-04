@@ -340,7 +340,7 @@ iframe {
   width: 25%; }
   @media only screen and (max-device-width: 1024px) and (orientation: portrait), only screen and (min-device-width: 1024px) and (max-width: 1024px) {
     #header-logo {
-      width: 60%; } }
+      width: 250px; } }
 
 .header {
   margin-top: 0.5em;
